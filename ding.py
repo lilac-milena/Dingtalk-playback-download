@@ -5,7 +5,7 @@ os.system("cls")
 
 print("使用前请准备ffmpeg及wget环境")
 print("---------------------------")
-print("下载通道:\n1.https://dtliving-sz.dingtalk.com/live_hp/\n2.https://dtliving-sh.dingtalk.com/live_hp/\n3.https://dtliving-bj.dingtalk.com/live/\n4.自定义\n---------------\n以上都是钉钉官方的API,钉钉的直播下载url应该是随机的,所以要根据抓包结果选择")
+print("下载通道:\n1.https://dtliving-sz.dingtalk.com/live_hp/\n2.https://dtliving-sh.dingtalk.com/live_hp/\n3.https://dtliving-bj.dingtalk.com/live_hp/\n4.自定义\n---------------\n以上都是钉钉官方的API,钉钉的直播下载url应该是随机的,所以要根据抓包结果选择")
 print("---------------------------")
 geturl=input("下载域名(1-4):")
 if geturl=='1':

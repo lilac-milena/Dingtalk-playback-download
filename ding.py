@@ -9,7 +9,7 @@ text=input("钉钉m3u8内容(抓包获得):")
 print("\n\n")
 print("下载通道:\n1.https://dtliving-sz.dingtalk.com/live_hp/ (推荐)(最新)\n2.https://dtliving-sh.dingtalk.com/live_hp/\n3.https://dtliving-bj.dingtalk.com/live/\n4.自定义\n以上都是钉钉官方的API,钉钉会每隔一段时间换一个直播域名(很奇怪),所以要根据直播当时的时间选择\n(近期的直播可以选择1)")
 print("---------------------------")
-geturl=input("钉钉m3u8内容(抓包获得):")
+geturl=input("下载域名(1-4):")
 if geturl=='1':
     dowurl='https://dtliving-sz.dingtalk.com/live_hp/'
 else:

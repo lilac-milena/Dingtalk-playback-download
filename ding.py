@@ -5,8 +5,6 @@ os.system("cls")
 
 print("使用前请准备ffmpeg及wget环境")
 print("---------------------------")
-text=input("钉钉m3u8内容(抓包获得):")
-print("\n\n")
 print("下载通道:\n1.https://dtliving-sz.dingtalk.com/live_hp/\n2.https://dtliving-sh.dingtalk.com/live_hp/\n3.https://dtliving-bj.dingtalk.com/live/\n4.自定义\n---------------\n以上都是钉钉官方的API,钉钉的直播下载url应该是随机的,所以要根据抓包结果选择")
 print("---------------------------")
 geturl=input("下载域名(1-4):")
@@ -25,10 +23,44 @@ else:
                 print('选择无效')
                 sys.exit()
 
+os.system("cls")
 
-notdot=text.replace(', ','.,.') #将", "替换为".,."防止将", "中的空格转换为换行
-ntext=notdot.replace(' ','\n') #将" "转换为换行
-stext=ntext.replace('.,.',', ') #将".,."转换回", "
+print("请选择m3u8来源\n1.群直播\n2.在线课堂\n注:本选项用于格式化m3u8文件\n-----------------\n")
+mmutype=input('类型(1-2):')
+if mmutype=='1':
+    
+    os.system("cls")
+
+    text=input("钉钉m3u8内容")
+
+    notdot=text.replace(', ','.,.') #将", "替换为".,."防止将", "中的空格转换为换行
+    ntext=notdot.replace(' ','\n') #将" "转换为换行
+    stext=ntext.replace('.,.',', ') #将".,."转换回", "
+else:
+    if mmutype=='2':
+        text=''
+        nowtext=''
+        os.system("cls")
+        while '#EXT-X-ENDLIST' not in nowtext:
+            nowtext=input("请输入m3u8内容\n")
+            text=text+nowtext
+
+        print(text)
+
+        usetext=text.replace('#',' #')[1:]
+        text=usetext
+
+        notdot=text.replace(',','.,.') #将", "替换为".,."防止将", "中的空格转换为换行
+        ntext=notdot.replace(' ','\n') #将" "转换为换行
+        stext=ntext.replace('.,.',', ') #将".,."转换回", "
+    else:
+        print('选择无效')
+        sys.exit()
+
+
+
+
+
 
 # -------
 # text        notdot          ntext       stext
@@ -44,6 +76,9 @@ nowline=4 #当前读取到的行数,从4开始,跳过头文件
 tss='' #临时存放ts URL(部分)的变量
 tsurls='' #存储ts文件url
 stop=0 #停止的次数 
+
+
+print(stext)
 
 while nowline<=list_line:
     

@@ -16,6 +16,6 @@
 ***
 
 
-![img](https://cdn.jsdelivr.net/gh/linglaoda/linglaoda.github.io@main/img/pots/dingtalk-downloads/8.webp)
-![img](https://cdn.jsdelivr.net/gh/linglaoda/linglaoda.github.io@main/img/pots/dingtalk-downloads/19.webp)
-![img](https://cdn.jsdelivr.net/gh/linglaoda/linglaoda.github.io@main/img/pots/dingtalk-downloads/18.webp)
+![img](https://cdn.jsdelivr.net/gh/linglaoda/imgs@master/pots/dingtalk-downloads/8_2.webp)
+![img](https://cdn.jsdelivr.net/gh/linglaoda/imgs@master/pots/dingtalk-downloads/19_2.webp)
+![img](https://cdn.jsdelivr.net/gh/linglaoda/imgs@master/pots/dingtalk-downloads/18_2.webp)

@@ -1,5 +1,6 @@
 # ✨Dingtalk-playback-download
 > 钉钉直播回放下载脚本
+### 编码:UTF-8
 #### 本脚本可用于下载钉钉禁止下载的直播回放
 
 

@@ -190,6 +190,6 @@ else:
     print('下载失败ts数量: '+str(errortss))
     print('')
     if str(errortss)==str(urls_line):
-        print('提示信息：您的ts文件全部下载失败，请检查是否为网络问题或m3u8文件是否有误')
+        print('提示信息：您的ts文件全部下载失败，请检查是否为网络问题或下载地址设置有误')
     print('')
     print('---详细信息已写入 err.log 文件---')

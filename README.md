@@ -16,7 +16,7 @@
 
 ## 🎇使用教程
 ### 有点复杂,去博客看叭~
-#### 博客:https://bingling.me/archives/dingtalk-downloads.html
+#### 博客:https://iling.cool/archives/dingtalk-downloads.html
 
 ***
 

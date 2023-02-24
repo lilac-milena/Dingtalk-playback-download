@@ -15,8 +15,7 @@
 ***
 
 ## 🎇使用教程
-### 有点复杂,去博客看叭~
-#### 博客:https://iling.uk/archives/dingtalk-downloads.html
+#### https://iling.uk/archives/dingtalk-downloads.html
 
 ***
 
@@ -24,9 +23,4 @@
 #### 1.群直播回放
 #### 2.在线课堂
 
-***
-
-
-![img](https://hk.ali-oss.iling.cool/pots/dingtalk-downloads/8_2.webp)
-![img](https://hk.ali-oss.iling.cool/pots/dingtalk-downloads/121545446.png)
-![img](https://hk.ali-oss.iling.cool/pots/dingtalk-downloads/15459531.png)
+**

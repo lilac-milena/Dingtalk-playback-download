@@ -15,7 +15,7 @@
 ***
 
 ## 🎇使用教程
-#### https://iling.uk/archives/dingtalk-downloads.html
+#### https://blog.muna.uk/archives/dingtalk-downloads.html
 
 ***
 

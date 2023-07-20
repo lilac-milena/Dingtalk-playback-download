@@ -64,7 +64,7 @@ else:
 
 os.system(clstext)
 
-print("请选择m3u8来源\n1.Windows端群直播\n2.在线课堂\n3.Linux端群直播\n注:本选项用于格式化m3u8文件\n-----------------\n")
+print("请选择m3u8来源\n1.Windows端群直播\n2.在线课堂\n3.Linux或手机端群直播\n注:本选项用于格式化m3u8文件\n-----------------\n")
 mmutype=input('类型(1-3):')
 if mmutype=='1':
     

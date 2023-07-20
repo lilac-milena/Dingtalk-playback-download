@@ -154,7 +154,11 @@ nowts=0 #当前ts
 tsstxt='' #ts文件目录树
 errortss=0 #下载错误的tss数量
 errorts=[] #下载错误的ts链接
+
 os.system('mkdir tss') #创建用于存储ts文件的目录
+
+for f in os.listdir("tss"):
+    os.remove(os.path.join("tss", f))
 
 while nowts<urls_line:
     

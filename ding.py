@@ -21,7 +21,7 @@ if systype == 'Linux':
 
 os.system(clstext)
 
-print("使用前请准备ffmpeg及wget环境")
+print("使用前请准备ffmpeg环境")
 print("---------------------------")
 print("下载通道:\n1.https://dtliving-sz.dingtalk.com/live_hp/\n2.https://dtliving-sh.dingtalk.com/live_hp/\n3.https://dtliving-bj.dingtalk.com/live_hp/\n4.自定义\n---------------\n以上都是钉钉官方的API,钉钉的直播下载url应该是随机的,所以要根据抓包结果选择")
 print("---------------------------")
@@ -158,8 +158,8 @@ os.system('mkdir tss') #创建用于存储ts文件的目录
 
 while nowts<urls_line:
 
-    if os.system("wget "+urls[nowts]+" -O tss/"+str(nowts)+".ts")!=0: #判断是否下载失败
-        if os.system("wget "+urls[nowts]+" -O tss/"+str(nowts)+".ts")!=0: #如下载失败则重新下载
+    if os.system("curl "+urls[nowts]+" -o tss/"+str(nowts)+".ts")!=0: #判断是否下载失败
+        if os.system("curl "+urls[nowts]+" -o tss/"+str(nowts)+".ts")!=0: #如下载失败则重新下载
             errortss=errortss+1 #重新下载失败
             errorts.append(str(nowts)+' | '+urls[nowts]) #将错误的ts链接存入列表
 

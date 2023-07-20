@@ -157,7 +157,9 @@ errorts=[] #下载错误的ts链接
 os.system('mkdir tss') #创建用于存储ts文件的目录
 
 while nowts<urls_line:
-
+    
+    print(str(nowts)+"/"+str(urls_line))
+    
     if os.system("curl "+urls[nowts]+" -o tss/"+str(nowts)+".ts")!=0: #判断是否下载失败
         if os.system("curl "+urls[nowts]+" -o tss/"+str(nowts)+".ts")!=0: #如下载失败则重新下载
             errortss=errortss+1 #重新下载失败

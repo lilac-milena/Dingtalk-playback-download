@@ -10,7 +10,7 @@
 
 ## 更新日志
 ### 2025/01/07 版本更新
-- **支持通过浏览器控制台抓包而无需降级钉钉或安装抓包工具（思路来源：https://www.bilibili.com/video/BV1EC41147fY/）**
+- **支持通过浏览器控制台抓包而无需降级钉钉或安装抓包工具（思路来源：https://www.bilibili.com/video/BV1EC41147fY/ ）**
 - 增加了 Windows 和 Linux 系统的 FFmpeg 安装脚本（源 https://github.com/BtbN/FFmpeg-Builds）
 - 改进了执行 curl 命令时潜在的安全性问题
 - 增加了 FFmpeg 安装状态检测，支持 ffmpeg 不配置环境变量同目录内调用

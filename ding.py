@@ -1,27 +1,56 @@
 #coding:utf-8
 
-
-
 import os
 import sys
 import platform
-
+import subprocess
 
 #判断系统类型
 systype = platform.system()
+for_linux_local_installed_ffmpeg = ""
 
 if systype == 'Windows':
-    clstext='cls'
-if systype == 'Linux':
-    clstext='clear'
-
-
-
-
+    clstext= 'cls'
+elif systype == 'Linux':
+    clstext= 'clear'
+else:
+    clstext= 'clear'
 
 os.system(clstext)
 
-print("使用前请准备ffmpeg环境")
+def noFFmpegExit():
+    print("""没有检测到 FFmpeg 环境
+FFmpeg 是用于合成视频片段的必备运行环境
+
+如果您全量下载了该脚本包，那么您可以在与该脚本同级的目录下找到名为 FFmpeg-Installation-Script-Linux.sh 和 FFmpeg-Installation-Script-Windows.bat 的 FFmpeg 安装脚本。
+如您是 Windows 用户，可以运行 FFmpeg-Installation-Script-Windows.bat，如您是 Linux 用户，可以运行 sh FFmpeg-Installation-Script-Linux.sh，脚本会自动为您配置 FFmpeg 环境。
+
+
+此外，您也可以选择手动安装 FFmpeg 环境，详情见 FFmpeg 官方网站：https://www.ffmpeg.org/
+    """)
+
+    sys.exit()
+
+# 判断 ffmpeg 环境
+try:
+    subprocess.run(["ffmpeg","-version"], check=True)
+    os.system(clstext)
+    print("FFmpeg 已安装")
+except:
+    # 对于 Linux 系统
+    if systype == 'Linux':
+        try:
+            subprocess.run(["./ffmpeg","-version"], check=True)
+            os.system(clstext)
+            for_linux_local_installed_ffmpeg = "./"
+            print("FFmpeg 已安装")
+        except:
+            noFFmpegExit()
+    else:
+        noFFmpegExit()
+
+    
+
 print("---------------------------")
 print("下载通道:\n1.https://dtliving-sz.dingtalk.com/live_hp/\n2.https://dtliving-sh.dingtalk.com/live_hp/\n3.https://dtliving-bj.dingtalk.com/live_hp/\n4.自定义\n---------------\n以上都是钉钉官方的API,钉钉的直播下载url应该是随机的,所以要根据抓包结果选择")
 print("---------------------------")
@@ -64,9 +93,9 @@ else:
 
 os.system(clstext)
 
-print("请选择m3u8来源\n1.Windows端群直播\n2.在线课堂\n3.Linux或手机端群直播\n注:本选项用于格式化m3u8文件\n-----------------\n")
+print("请选择m3u8来源\n1.浏览器调试控制台 或 Linux客户端\n2.在线课堂\n3.Windows端群直播\n注:本选项用于格式化m3u8文件\n-----------------\n")
 mmutype=input('类型(1-3):')
-if mmutype=='1':
+if mmutype=='3':
     
     os.system(clstext)
 
@@ -86,7 +115,7 @@ elif mmutype=='2':
     ntext=notdot.replace(' ','\n') #将" "转换为换行
     stext=ntext.replace('.,.',', ') #将".,."转换回", "
     
-elif mmutype=='3':
+elif mmutype=='1':
 
     stext=text.replace(',\n',', ') #将",\n"转换回", "
     
@@ -143,11 +172,11 @@ while nowline<=list_line:
             print("ok")
             nowline=nowline+1
 
-print(tsurls)
+print("t:" + tsurls)
 # 至此 数据处理完毕
 # ↓下载↓
 urls=tsurls.split("\n")
-urls_line=int(len(urls))-1-stop #ts URL数量
+urls_line=len(urls)-1
 print("将下载 "+str(urls_line)+" 个分段")
 
 nowts=0 #当前ts
@@ -164,12 +193,21 @@ while nowts<urls_line:
     
     print(str(nowts)+"/"+str(urls_line))
     
-    if os.system("curl "+urls[nowts]+" -o tss/"+str(nowts)+".ts")!=0: #判断是否下载失败
-        if os.system("curl "+urls[nowts]+" -o tss/"+str(nowts)+".ts")!=0: #如下载失败则重新下载
+    def download_this_part(this_part_url, this_part_nowts):
+        try:
+            this_res = subprocess.run(["curl", this_part_url, "-o", "tss/"+str(this_part_nowts)+".ts","-f"], check=True)
+            if this_res.returncode == 0:
+                return 0
+            else:
+                return False
+        except subprocess.CalledProcessError as e:
+            print(e)
+            return False
+        
+    if download_this_part(urls[nowts], nowts)!=0: #判断是否下载失败
+        if download_this_part(urls[nowts], nowts)!=0: #如下载失败则重新下载
             errortss=errortss+1 #重新下载失败
             errorts.append(str(nowts)+' | '+urls[nowts]) #将错误的ts链接存入列表
-
-        
 
     tsstxt=tsstxt+"file  'tss/"+str(nowts)+".ts'"+"\n"
     nowts=nowts+1
@@ -183,7 +221,8 @@ os.system(clstext)
 
 
 if errortss==0: #判断是否全部下载完成
-    os.system('ffmpeg -f concat -i tss.txt -c copy output.mp4') #利用ffmpeg合并视频文件
+    os.system(for_linux_local_installed_ffmpeg + 'ffmpeg -f concat -i tss.txt -c copy output.mp4') #利用ffmpeg合并视频文件
+    print("下载成功，视频文件已保存至 output.mp4")
 else:
     
     with open('err.log','w+') as f: #写错误的ts链接
